@@ -17,7 +17,7 @@ namespace CleanArch.Infra.Data.Repositores
             this.db = db;
         }
 
-        public IEnumerable<Course> GetCourse()
+        public IEnumerable<Course> GetCourses()
         {
             return db.Courses.ToList();
         }
