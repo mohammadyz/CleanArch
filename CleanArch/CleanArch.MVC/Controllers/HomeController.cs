@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArch.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CleanArch.MVC.Models;
@@ -11,16 +12,16 @@ namespace CleanArch.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private ICourseServices _courseServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICourseServices courseServices)
         {
-            _logger = logger;
+            _courseServices = courseServices;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_courseServices.GetCourses());
         }
 
         public IActionResult Privacy()

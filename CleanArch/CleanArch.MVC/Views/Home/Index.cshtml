@@ -1,8 +1,17 @@
-﻿@{
+﻿@model CleanArch.Application.ViewModels.CourseViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+    @foreach (var item in Model.Courses)
+    {
+        <h1 class="display-4">@item.Title</h1>
+        <p>@item.Description</p>
+
+    }
 </div>
